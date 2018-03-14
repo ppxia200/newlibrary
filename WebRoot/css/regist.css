@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+#refrm{
+	text-align: center;
+	width: 600px;
+	margin: 55px auto;
+	position: relative;
+}
+#refrm fieldset{
+	width: 100%;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px #c0c0c0;
+	padding: 20px 10px;
+	padding-bottom: 12px;
+	margin: 0 3%;
+	box-sizing: border-box;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+#refrm input{
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 16px;
+}
+#refrm h3{
+	margin-top: 8px;
+	color: #33ccff;
+	letter-spacing: 8px;
+}
+#refrm .resub:hover, #refrm .resub:focus{
+	box-shadow: 0 0 2px 1px #008040;
+}
+#refrm .resub{
+	cursor: pointer;
+	background: #33ccff;
+	color: white;
+	font-weight: bold;
+	letter-spacing: 20px;
+	width: 100%;
+}
+#refrm .erTip{
+	color: red;
+	font-size: 14px;
+	text-align: left;
+	font-family: verdana, arial, helvetica, sans-serif;
+	width: 100%;
+}
+#refrm .reAuthIn{
+	width: 60%;
+	float: left;
+}
+#refrm .reAuthCode{
+	width: 30%;
+	height: 45px;
+}

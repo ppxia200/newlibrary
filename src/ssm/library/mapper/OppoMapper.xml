@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.library.mapper.OppoMapper">
+
+	<insert id="insertOppoInfo" parameterType="ssm.library.po.OppoInfo">
+		INSERT INTO oppo_info(bookId,userId,oppoDate,endDate) 
+		VALUES(#{bookId},#{userId},#{oppoDate},#{endDate})
+	</insert>
+	
+	<delete id="deleteOppoInfoByIds" parameterType="ssm.library.po.OppoInfo">
+		DELETE FROM oppo_info WHERE userId=#{userId} AND bookId=#{bookId}
+	</delete>
+	
+	<select id="findOppoInfoByUserId" parameterType="int" 
+		resultType="ssm.library.po.OppoInfoExtend">
+		SELECT oppo_info.*,book.* FROM oppo_info,book WHERE userId = #{id} AND bookId=book.id
+	</select>
+	
+	<select id="findOppoInfoByBookId" parameterType="int" 
+		resultType="ssm.library.po.OppoInfoExtend">
+		SELECT oppo_info.*,book.* FROM oppo_info,book WHERE bookId = #{id} AND bookId=book.id
+	</select>
+	
+	<select id="findOppoInfoByUserIds" parameterType="ssm.library.po.OppoInfo" 
+		resultType="ssm.library.po.OppoInfo">
+		SELECT * FROM oppo_info WHERE bookId = #{bookId} and userId=#{userId}
+	</select>
+	
+	<update id="updateOppoInfo" parameterType="ssm.library.po.OppoInfo">
+		UPDATE oppo_info  
+		<set>
+			oppoDate=#{oppoDate}, endDate=#{endDate}
+		</set>
+		WHERE userId=#{userId} AND bookId=#{bookId}
+	</update>
+	
+	<select id="findOppoHistoryByBookId" parameterType="int" resultType="ssm.library.po.OppoInfo">
+		SELECT * FROM oppo_info WHERE bookId = #{id}
+	</select>
+</mapper>

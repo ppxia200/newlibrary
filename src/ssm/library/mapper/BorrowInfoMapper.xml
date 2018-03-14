@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.library.mapper.BorrowInfoMapper">
+
+
+ 	<select id="findBorrowInfoByIds" parameterType="ssm.library.po.BorrowInfoVo" 
+ 		resultType="ssm.library.po.BorrowInfo">
+ 		SELECT * FROM book_user WHERE bookId=#{borrowInfo.bookId} 
+ 		AND userId=#{borrowInfo.userId} and id=#{borrowInfo.id}
+ 	</select>
+ 	
+ 	<select id="findBookByUserId" parameterType="int" resultType="ssm.library.po.BorrowInfo">
+ 		SELECT * FROM book_user WHERE userId=#{value}
+ 	</select>
+ 	
+ 	<insert id="insertBorrowInfo" parameterType="ssm.library.po.BorrowInfo">
+ 		INSERT INTO book_user(id,bookId,userId,borrowDate,isReturn,shouldReturnDate,renewCount,returnDate)
+ 		VALUES(#{id},#{bookId},#{userId},#{borrowDate},#{isReturn},#{shouldReturnDate},#{renewCount},
+ 		#{returnDate})
+ 	</insert>
+ 	
+ 	<delete id="deleteBorrowInfoByIds" parameterType="ssm.library.po.BorrowInfoVo">
+ 		DELETE FROM book_user WHERE bookId=#{borrowInfo.bookId} AND userId=#{borrowInfo.userId} 
+ 		and id=#{borrowInfo.id}
+ 	</delete>
+ 	
+ 	<update id="updateBorrowInfoByIds" parameterType="ssm.library.po.BorrowInfoVo">
+ 		UPDATE book_user
+ 		<set>
+ 			borrowDate=#{borrowInfo.borrowDate,jdbcType=DATE},isReturn=#{borrowInfo.isReturn},
+ 			shouldReturnDate=#{borrowInfo.shouldReturnDate,jdbcType=DATE},renewCount=#{borrowInfo.renewCount},
+ 			returnDate=#{borrowInfo.returnDate}
+ 		</set>
+ 		WHERE bookId=#{borrowInfo.bookId} AND userId=#{borrowInfo.userId} and id=#{borrowInfo.id}
+ 	</update>
+ 	
+ 	<!-- 综合查询借书记录 -->
+ 	<select id="findBorrowInfoUserByUserId" parameterType="int" resultType="ssm.library.po.BorrowInfoUser">
+ 		SELECT book_user.id,book.bookname, book.writer,book.company,book.address, borrowDate, shouldReturnDate,renewCount,
+		userId,bookId FROM book_user,book WHERE userId = #{id} AND isReturn=FALSE AND bookId = book.id
+ 	</select>
+ 	
+ 	<!-- 综合查询借书历史 -->
+ 	<select id="findBorrowHistoryByUserId" parameterType="int" resultType="ssm.library.po.BorrowInfoUser">
+ 		SELECT book.bookname, book.writer,book.company,book.address, borrowDate, shouldReturnDate,returnDate,
+		isReturn FROM book_user,book WHERE userId = #{id} AND bookId = book.id
+ 	</select>
+ 	
+ 	<!-- 根据书本id查找借阅信息 -->
+ 	<select id="findBorrowInfoByBookId" parameterType="int" resultType="ssm.library.po.BorrowInfo">
+ 		SELECT * FROM book_user WHERE bookId = #{id} AND isReturn = FALSE
+ 	</select>
+ 	
+ 	<!-- 根据书本id查找借阅历史信息 -->
+ 	<select id="findBorrowHistoryByBookId" parameterType="int" resultType="ssm.library.po.BorrowInfo">
+ 		SELECT * FROM book_user WHERE bookId = #{id} AND isReturn = TRUE
+ 	</select>
+ 
+ 	<delete id="deleteBorrowInfoByBookId" parameterType="int">
+ 		DELETE FROM book_user WHERE bookId = #{bookId}
+ 	</delete>
+ 	
+</mapper>

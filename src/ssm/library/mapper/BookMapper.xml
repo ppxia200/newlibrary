@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.library.mapper.BookMapper">
+
+	<!-- 动态拼接 -->
+	<sql id="select_book_where">
+		<if test="book != null">
+			<if test="book.bookname != null and book.bookname != ''" >
+				<!-- 这里用#回报错 -->
+				or bookname LIKE '%${book.bookname}%'
+			</if>
+			<if test="book.writer != null and book.writer != ''">
+				or writer LIKE '%${book.writer}%'
+			</if>
+			<if test="book.company != null and book.company != ''">
+				or company LIKE '%${book.company}%'
+			</if>
+			<if test="book.address != null and book.address != ''">
+				or address LIKE '%${book.address}%'
+			</if>
+		</if>
+	</sql>
+
+ 	<select id="findBookById" parameterType="int" resultType="ssm.library.po.Book">
+ 		SELECT * FROM book WHERE id = #{value}
+ 	</select>
+ 	
+ 	<insert id="insertBook" parameterType="ssm.library.po.Book">
+ 		INSERT INTO book(id,bookname,writer,version,company,address,state)
+ 		VALUES(#{id},#{bookname},#{writer},#{version},#{company},#{address},#{state})
+ 	</insert>
+ 	
+ 	<delete id="deleteBookById" parameterType="int">
+ 		DELETE FROM book WHERE id = #{value}
+ 	</delete>
+ 	
+ 	<update id="updateBook" parameterType="ssm.library.po.Book">
+ 		UPDATE book 
+ 		<set>
+ 			bookname=#{bookname},writer=#{writer},version=#{version},
+ 			company=#{company},address=#{address},state=#{state}
+ 		</set>
+ 		WHERE id=#{id}
+ 	</update>
+ 	
+ 	<!-- 多条件查询 -->
+ 	<select id="findBooks" parameterType="ssm.library.po.BookVo" resultType="ssm.library.po.Book" >
+ 		SELECT * FROM book 
+ 		<where>
+ 			<include refid="select_book_where"></include>
+ 		</where>
+ 	</select>
+ 
+</mapper>

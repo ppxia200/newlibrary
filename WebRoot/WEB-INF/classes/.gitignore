@@ -1,0 +1,9 @@
+/beans/
+/book_validation_message.properties
+/db.properties
+/log4j.properties
+/mapper/
+/mybatis/
+/spring/
+/ssm/
+/user_validation_message.properties

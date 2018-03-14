@@ -1,0 +1,135 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.title_div{
+	width: 100%;
+	height: 12%;
+	/*background-color: #40bc36;*/
+	background-color: #34a8d3;
+	
+}
+.navi_div{
+	width: 100%;
+	height: 48px;
+	background-color: #a5c5be; 
+	
+}
+.other_div{
+	width: 100%;
+	height: 81%;
+}
+.title_content{
+	font-size: 39px;
+	font-weight: bold;
+	font-family: cursive;
+	letter-spacing: 6px;
+	color: white;
+	position : relative;
+	top: 20%;
+	left: 6%;
+}
+.login_select{
+	float: right;
+	position: relative;
+	top: 33%;
+	right: 6%;
+	width: 85px;
+	height: 40%;
+	text-align: center;
+}
+.home_search_div{
+	background-color: white;
+	width: 100%;
+	height: 60px;
+	padding-top: 23px;
+	text-align: center;
+}
+.home_search_div > div form > select{
+	text-align: center;
+	height: 30px;
+	width: 80px;
+	text-decoration: none;
+}
+.home_search_input{
+	height: 30px;
+	width: 300px;
+	border: solid 1px #34a8d3;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+.home_search_submit_btn{
+	height: 32px;
+	background-color: #34a8d3;
+	color: white;
+	font-size: 16px;
+	letter-spacing: 4px;
+	border-radius: 3px;
+	width: 70px;
+}
+/*导航栏*/
+.navi_div > ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.navi_div > ul > li{
+	float: left;
+	position: relative;
+}
+.navi_div > ul > li > a{
+	width: 100%;
+	/* background: #94cdc9; */
+	margin-left: 10px;
+	height: 38px;
+}
+.navi_div > ul > li > a:link, .navi_div > ul > li > a:visited{
+	font-size: 18px;
+	font-family: fantasy;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+	display: block;
+	width: 100px;
+	text-decoration: none;
+}
+.navi_div > ul > li > a:hover, .navi_div > ul > li > a:active{
+	background: #990000;
+}
+/* 鼠标滑过显示下拉列表的样式 */
+.home_down_list > li > a{
+	text-decoration: none;
+	color: white;
+}
+.home_down_list{
+	list-style-type: none;
+	background-color: #990000;
+	display: none;
+	/*悬浮显示：父：position: relative;子：position: absolute;left: 0;top: 38px;*/
+	position: absolute;
+	left: 10px;
+	top: 48px;
+	padding: 0;
+	width: 120px;
+	/* border-radius: 3px; */
+}
+.home_down_list > li{
+	display: block;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+.home_down_list > li:hover{
+	background-color: #34a8d3;
+}
+.home_show_div{
+	border-top: dashed 1px #34a8d3;
+	width: 100%;
+	height: 430px;
+	background: url(../images/index.jpg) no-repeat center;
+	background-size: 400px 280px;
+	/* filter: blur(0.5px); */
+}

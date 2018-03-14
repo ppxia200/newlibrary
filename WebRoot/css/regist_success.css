@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+div{
+	font-size: 22px;
+	font-family: Georgia;
+	text-align: center;
+	margin-top: 15%;
+}
+input{
+	border: 0 none;
+	width: 140px;
+	height: 35px;
+	background: #3333ff;
+	color: white;
+	font-family: Georgia;
+	cursor: pointer;
+	font-size: 18px;
+}
+input:hover{
+    box-shadow: 0 0 3px 2px #c0c0c0;
+}

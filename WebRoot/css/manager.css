@@ -1,0 +1,174 @@
+html, body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.manager_title_div{
+	width: 100%;
+	height: 20%;
+	background: url(../images/set.jpg) no-repeat left;
+	background-size: 150px 150px;
+	background-position: 5% 80%;
+}
+.manager_other_div{
+	width: 100%;
+	height: 80%;
+}
+.manager_navi_div{
+	width: 14%;
+	height: 100%;
+	float: left;
+	padding-left: 3px;
+}
+.manager_show_div{
+	width: 81.5%;
+	height: 100%;
+	float: right;
+}
+/* 导航栏里边的内容 */
+.manager_navi_div > h5{
+	margin: 0;
+	width: 100%; 
+	height: 26px; 
+	background: linear-gradient(#b3bbb8, #ebebeb,#b3bbb8); 
+	padding-top: 6px;
+	padding-left: 5px;
+}
+.manager_service_div{
+	width: 100%;
+	position: relative;
+	height: 90%;
+	border: solid 1px #b3bbb8;
+	padding-left: 3px;
+}
+.manager_service_ul{
+	padding-left: 26px;
+}
+.manager_service_ul > li{
+	margin-top: 17px;
+}
+.manager_service_ul > li > a{
+	text-decoration: none;
+	color: #dd611e;
+}
+.manager_service_ul > li :hover{
+	font-size: 16.5px;
+	background-color: #c0c0c0;
+}
+/*管理框*/
+#add_book_id{
+	/* display: none; */
+}
+
+/* 编辑图书的表格*/
+.manager_edit_table{
+	width: 98%;
+	margin-top: 17px;
+}
+.th_tr{
+	background-color: #c0c0c0;
+	border: none;
+}
+.th_tr > th{
+	text-align: left;
+	padding-left: 10px;
+	border: none;
+	font-weight: normal;
+	margin-bottom: 6px;
+}
+.td_tr > td{
+	padding-top: 20px;
+	padding-right: 0;
+	border-bottom: 1px solid #dd611e;
+	padding-bottom: 6px;
+}
+/*删除按钮*/
+.td_tr > td > a{
+	display: block;
+	text-decoration: none;
+	font-size: 15px;
+	background-color: #dd611e;
+	color: white;
+	border-radius: 3px;
+	padding: 0 6px 3px 6px;
+	text-align: center;
+}
+/*输入框*/
+.manager_input{
+	padding-left: 5px;
+	padding-top: 3px;
+	height: 22px;
+	font-size: 16px;
+	margin: 0;
+	border-radius: 3px;
+	border: solid 1px #c0c0c0;
+	
+}
+/*按钮框*/
+.botton_div{
+	background-color: #c0c0c0;
+	width: 81%;
+	height: 60px;
+	position: fixed;
+    bottom:	0; 
+}
+.add_box_button{
+	float: right;
+	background-color: #dd611e;
+	color: white;
+	margin-right: 30px;
+	padding: 5px 8px 2px 8px;
+	letter-spacing: 3px;
+	margin-top: 3px;
+	border-radius: 6px;
+	font-size: 16px; 
+}
+/*查新输入部分*/
+.search_input_div{
+	text-align: center;
+	padding-top: 20px;
+	border-bottom: solid 1px #dd611e;
+	padding-bottom: 20px;
+}
+.search_input_div > form > select{
+	text-align: center;
+	height: 30px;
+	width: 80px;
+	text-decoration: none;
+}
+.edit_search_input{
+	height: 30px;
+	width: 300px;
+	border: solid 1px #dd611e;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+.edit_search_submit_btn{
+	height: 32px;
+	background-color: #dd611e;
+	color: white;
+	font-size: 16px;
+	letter-spacing: 4px;
+	border-radius: 5px;
+	width: 70px;
+}
+#edit_book_tr_id > td{
+	padding-top: 20px;
+	padding-right: 0;
+	border-bottom: 1px dashed #dd611e;
+	padding-bottom: 6px;
+}
+/*修改用户信息*/
+#edit_user_tr_id > td{
+	padding-top: 20px;
+	padding-right: 0;
+	border-bottom: 1px dashed #dd611e;
+	padding-bottom: 6px;
+}
+#edit_book_id{
+	/* display: none; */
+}
+#authority_manage_id{
+	/* display: none; */
+}

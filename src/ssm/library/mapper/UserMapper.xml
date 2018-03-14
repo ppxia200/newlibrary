@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.library.mapper.UserMapper">
+
+
+ 	<select id="findUserById" parameterType="int" resultType="ssm.library.po.User">
+ 		SELECT * FROM user_info WHERE id = #{value}
+ 	</select>
+ 	
+ 	<insert id="insertUser" parameterType="ssm.library.po.User">
+ 		INSERT INTO user_info(id,username, passwd, nickname, identity,pic,maxBorrow,maxOppo,createTime)
+ 		 VALUES(#{id},#{username},#{passwd},#{nickname},#{identity},#{pic},#{maxBorrow},#{maxOppo},#{createTime})
+ 	</insert>
+ 	
+ 	<delete id="deleteUserById" parameterType="int">
+ 		DELETE FROM user_info WHERE id = #{value}
+ 	</delete>
+ 	
+ 	<update id="updateUser" parameterType="user">
+ 		UPDATE user_info 
+ 		<set>
+ 			<!--
+ 			passwd:是数据库表中的属性名称
+ 			#{passwd}:是po类对应的属性名
+ 			 -->
+ 			username=#{username},passwd=#{passwd},nickname=#{nickname},
+ 				identity=#{identity},pic=#{pic},maxBorrow=#{maxBorrow},maxOppo=#{maxOppo},createTime=#{createTime} 
+ 		</set>
+ 		WHERE id=#{id}
+ 	</update>
+ 	
+ 	<!-- 根据给定的条件查找用户 -->
+ 	<select id="findUser" parameterType="ssm.library.po.UserVo" resultType="user">
+ 		SELECT * FROM user_info WHERE username = #{username} AND passwd = #{passwd}
+ 	</select>
+ 	
+ 	<select id="findUserByUsername" parameterType="string" resultType="user">
+ 		SELECT * FROM user_info WHERE username=#{username}
+ 	</select>
+ 	
+ 	<select id="findUserExtend" parameterType="ssm.library.po.User" resultType="ssm.library.po.UserExtend">
+ 		SELECT user_info.*,(SELECT COUNT(*) FROM user_info,book_user WHERE userId=#{id}
+		AND user_info.id = book_user.userId AND isReturn = FALSE)AS currentBorrowCount,(SELECT COUNT(*) 
+		FROM oppo_info,user_info WHERE userId=#{id} AND user_info.id = oppo_info.userId)
+		AS currentOppoCount FROM user_info WHERE id=#{id}
+ 	</select>
+ 	
+ 	<!-- 综合查询用户，用于修改用户信息时的查询 -->
+ 	<select id="findUsers" parameterType="ssm.library.po.UserVo" resultType="ssm.library.po.User">
+ 		SELECT * FROM user_info 
+ 		<where>
+ 			<include refid="select_user_where"></include>
+ 		</where>
+ 	</select>
+ 	
+ 	<sql id="select_user_where">
+		<if test="user != null">
+			<if test="user.username != null and user.username != ''">
+				or username LIKE '%${user.username}%'
+			</if>
+			<if test="user.nickname != null and user.nickname != ''">
+				or nickname LIKE '%${user.nickname}%'
+			</if>
+		</if>
+ 	</sql>
+ 	
+ 	<update id="updateUserIdentity" parameterType="ssm.library.po.User">
+ 		UPDATE user_info
+ 		<set>
+ 			identity = #{identity}
+ 		</set>
+ 		where id = #{id}
+ 	</update>
+ 
+</mapper>
